@@ -49,3 +49,16 @@ The final goal is to have a simple, intuitive, and engaging web-based UI built w
     * Implement error handling for API calls.
 * **Random Selection:** Implement logic to randomly pick a movie from the retrieved list.
 * **DOM Manipulation:** Dynamically update the HTML to display the recommended movie details.
+
+
+
+How It Works (Conceptual Flow for UI)
+
+1.  **User Input:** The user interacts with the UI to specify their mood.
+2.  **Mood Processing:**
+    * If text input, JavaScript sends the text to a sentiment analysis function (internal or external API).
+    * If selection, JavaScript directly uses the chosen mood.
+3.  **Genre Mapping:** JavaScript uses the processed mood to determine relevant TMDB genre ID(s) (e.g., "Happy" -> "Comedy", "Romance").
+4.  **API Call:** JavaScript constructs and sends a request to the TMDB API to fetch movies within those genre(s).
+5.  **Movie Selection:** Upon receiving a successful response, JavaScript randomly picks one movie from the list.
+6.  **Display:** The UI is updated with the selected movie's details (title, overview, poster, etc.).
