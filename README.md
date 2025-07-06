@@ -1,6 +1,4 @@
-Here's a .md file for your GitHub project, outlining the UI goals and a basic structure. I've included sections that explain the project, how to get started, and a conceptual "how it works" to guide your UI development.
 
-Markdown
 
 # movie_little_helper
 
