@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sentiment Test</title>
+    <script type="module">
+      import Sentiment from 'https://cdn.skypack.dev/sentiment';
+
+      const sentiment = new Sentiment();
+      const result = sentiment.analyze("I am feeling energized and happy!");
+        console.log("Sentiment Score:", result.score);
+        console.log("Comparative Score:", result.comparative);
+        console.log("Words Found:", result.words);
+        console.log("All Details:", result);
+    </script>
+  </head>
+  <body>
+    <h1>Open your browser console</h1>
+  </body>
+</html>
