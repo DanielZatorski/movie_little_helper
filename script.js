@@ -11,13 +11,29 @@ document.addEventListener("DOMContentLoaded", () => {
   const btn = document.querySelector("#analyze-btn");   // button to start analysis
   const scoreEl = document.querySelector("#score");     // place where we show result
 
-  // function that checks the text and updates the score
-  function updateScore() {
-    const result = sentiment(input.value); // analyze the text
-    scoreEl.textContent = result.normalizedScore.toFixed(3); // show score (rounded to 3 decimals)
-    console.log("Analysis result:", result);
-  }
+    //reversed genre mapping to the sentiment eg. sad = happy movie
+    function mapSentimentToGenre(score) {
+        if (score <= -2.0) return "Comedy / Stand-up";
+        if (score <= -1.0) return "Adventure / Family";
+        if (score <= -0.2) return "Romance / Musical";
+        if (score <= +0.2) return "Mystery / Thriller";
+        if (score <= +1.0) return "Tragedy / Historical Drama";
+        if (score <= +2.0) return "Drama / War";
+        return "Horror / Psychological Thriller";
+    }
 
+
+    function updateScore() {
+    const result = sentiment(input.value);
+    const score = result.normalizedScore.toFixed(3);
+
+    // apply function to find genre
+    const genre = mapSentimentToGenre(result.normalizedScore);
+    
+    scoreEl.textContent = " Genre " + genre + " | score: " + score;
+
+    console.log(`Score: ${score}, Suggested Genre: ${genre}`);
+    }
   // Run the analysis once when the page first loads
   updateScore();
 
