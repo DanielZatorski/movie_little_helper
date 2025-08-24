@@ -1,10 +1,21 @@
-const Sentiment = require('sentiment');
+import sentiment from "https://esm.sh/wink-sentiment";
 
-const sentiment = new Sentiment();
+document.addEventListener("DOMContentLoaded", () => {
 
-const result = sentiment.analyze("I am feeling energized I feel that I want to break things!");
+  // DOM wiring
+  const input = document.querySelector("#text-input");   // text box where user types
+  const btn = document.querySelector("#analyze-btn");   // button to start analysis
+  const scoreEl = document.querySelector("#score");     // place where we show result
 
-console.log("Sentiment Score:", result.score);
-console.log("Comparative Score:", result.comparative);
-console.log("Words Found:", result.words);
-console.log("All Details:", result);
+  // function that checks the text and updates the score
+  function updateScore() {
+    const result = sentiment(input.value); // analyze the text
+    scoreEl.textContent = result.normalizedScore.toFixed(3); // show score (rounded to 3 decimals)
+  }
+
+  // Run the analysis once when the page first loads
+  updateScore();
+
+  // Run the analysis again every time the button is clicked
+  btn.addEventListener("click", updateScore);
+});
