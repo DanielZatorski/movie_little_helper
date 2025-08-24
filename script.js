@@ -1,7 +1,7 @@
 
 
 //on comand line write "npx http-server ." to work on the file and then open http://localhost:8080
-
+//remember to disable caching in Network tab in Dev Tool
 import sentiment from "https://esm.sh/wink-sentiment";
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -15,6 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function updateScore() {
     const result = sentiment(input.value); // analyze the text
     scoreEl.textContent = result.normalizedScore.toFixed(3); // show score (rounded to 3 decimals)
+    console.log("Analysis result:", result);
   }
 
   // Run the analysis once when the page first loads
@@ -23,3 +24,5 @@ document.addEventListener("DOMContentLoaded", () => {
   // Run the analysis again every time the button is clicked
   btn.addEventListener("click", updateScore);
 });
+
+//console.log("hello")
