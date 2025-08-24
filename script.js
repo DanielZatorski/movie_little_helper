@@ -1,3 +1,7 @@
+
+
+//on comand line write "npx http-server ." to work on the file and then open http://localhost:8080
+
 import sentiment from "https://esm.sh/wink-sentiment";
 
 document.addEventListener("DOMContentLoaded", () => {
