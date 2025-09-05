@@ -24,6 +24,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     function updateScore() {
+
+    const text = input.value.trim();
+
+    // if there is no text in result clear it
+    if (text === "") {
+      scoreEl.textContent = "";
+      return;
+    }
+
     const result = sentiment(input.value);
     const score = result.normalizedScore.toFixed(3);
 
@@ -34,6 +43,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     console.log(`Score: ${score}, Suggested Genre: ${genre}`);
     }
+
+
   // Run the analysis once when the page first loads
   updateScore();
 
