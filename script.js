@@ -51,7 +51,7 @@ async function analyzeInput() {
     const result = results[0]; // get first result from analysis
     const sentiment = result.label;
     const confidence = result.score; // Convert to percentage
-    scoreEl.textContent = `Sentiment: ${sentiment} (Confidence: ${confidence})`;
+    scoreEl.textContent = `Sentiment: ${sentiment} (Confidence: ${confidence}). Your genre suggestions are: ${pickGenrefromSentiment(sentiment)}`;
     
   } catch (error) {
     console.error(error);
@@ -110,5 +110,3 @@ function pickGenrefromSentiment(label){
 
 }
 
-
-console.log(pickGenrefromSentiment("positive"))
