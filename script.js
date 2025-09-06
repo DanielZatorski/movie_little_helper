@@ -50,7 +50,7 @@ async function analyzeInput() {
     const results = await analyze(text);
     const result = results[0]; // get first result from analysis
     const sentiment = result.label;
-    const confidence = result.score; // Convert to percentage
+    const confidence = Math.round(result.score * 100) / 100 ; // Convert to percentage
     scoreEl.textContent = `Sentiment: ${sentiment} (Confidence: ${confidence}). Your genre suggestions are: ${pickGenrefromSentiment(sentiment)}`;
     
   } catch (error) {
