@@ -11,9 +11,9 @@
 The core idea is to simplify movie selection by aligning it with your current emotional state. Here's how we plan to achieve it:
 
 1.  **Mood Detection/Selection:** Allow users to either express their mood through text (for sentiment analysis) or select from a predefined list of emotions.
-2.  **Mood-to-Genre Mapping:** Map the detected or selected mood to appropriate movie genre IDs from The Movie Database (TMDB or IMDB).
-3.  **Movie Fetching:** Utilize the API to fetch a list of movies belonging to the matched genre.
-4.  **Random Selection & Recommendation:** Randomly select a movie from the fetched list and present it to the user as a recommendation.
+2.  **Mood-to-Genre Mapping:** Map the detected or selected mood to appropriate random movie genre IDs from The Movie Database (TMDB or IMDB).
+3.  **Movie Fetching:** Utilize the API to fetch a list of movies belonging to the matched genre by choosing three options.
+4.  **Random Selection & Recommendation:** Randomly select 3 movies from the fetched list and present it to the user as a recommendation.
 
 ##  User Interface (UI)
 
@@ -47,7 +47,7 @@ The final goal is to have a simple, intuitive, and engaging web-based UI built w
     * Construct API requests using the fetched genre IDs.
     * Handle API responses, extracting movie data.
     * Implement error handling for API calls.
-* **Random Selection:** Implement logic to randomly pick a movie from the retrieved list.
+* **Random Selection:** Implement logic to randomly pick 3 movies from the retrieved list.
 * **DOM Manipulation:** Dynamically update the HTML to display the recommended movie details.
 
 
