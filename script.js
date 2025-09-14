@@ -109,11 +109,12 @@ async function analyzeInput() {
 
 
   
-  //let moviesDict = {}
+  let genre1 = []
+  let genre2 = []
+  let genre3 = []
   //iterate through genreIds to parse into api request
   for (let i=0; i<genreIds.length;i++){
 
-    let firstData = await getMoviesByGenre(genreIds[i], 1, YOUR_API_KEY) // to determine amount of total pages per genre
     let totalPages = 500 //Math.min(firstData.total_pages); // get total amount of pages from TMDB 
     //console.log(totalPages)
     let randomPage = Number(Math.floor(Math.random() * totalPages) + 1);
@@ -121,15 +122,25 @@ async function analyzeInput() {
 
     const pageData = await getMoviesByGenre(genreIds[i], randomPage, YOUR_API_KEY);
 
-    console.log(pageData)
-
-
-
+    //  push each genreId into a variable
+    if (i === 0) {
+      for (let j = 0; j < pageData.results.length; j++) {
+        genre1.push(pageData.results[j]);
+      }
+    } else if (i === 1) {
+      for (let j = 0; j < pageData.results.length; j++) {
+        genre2.push(pageData.results[j]);
+      }
+    } else if (i === 2) {
+      for (let j = 0; j < pageData.results.length; j++) {
+        genre3.push(pageData.results[j]);
+      }
+    }
   }
 
-
-
-
+  console.log("Genre 1 Movies:", genre1);
+  console.log("Genre 2 Movies:", genre2);
+  console.log("Genre 3 Movies:", genre3);
 
 
 
