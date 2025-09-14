@@ -119,9 +119,34 @@ init();
 // get 3 random genre propositions  from arrays 
 function pickGenrefromSentiment(label){
 
-  const moviesForNegative = ["Comedy", "Family", "Animation", "TV Movie", "Music"];
-  const moviesForPositive = ["Romance", "Horror", "Adventure", "Fantasy", "Science Fiction"];
-  const moviesForNeutral = ["Drama", "Mystery", "Documentary", "History", "War"];
+const moviesForNegative = [
+  "Comedy",
+  "Family",
+  "Animation",
+  "TV Movie",
+  "Music",
+  "Documentary",
+  "Fantasy"
+];
+
+const moviesForPositive = [
+  "Romance",
+  "Horror",
+  "Adventure",
+  "Science Fiction",
+  "Action",
+  "Thriller"
+];
+
+const moviesForNeutral = [
+  "Drama",
+  "Mystery",
+  "History",
+  "War",
+  "Western",
+  "Crime"
+];
+
 
   if (label === "negative"){
 
