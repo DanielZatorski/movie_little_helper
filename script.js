@@ -32,6 +32,7 @@ const TMDB_GENRES = {
   Western: 37
 };
 
+const YOUR_API_KEY = "YOUR_API_KEY"
 
 // Import the library from the web
 import { pipeline } from "https://cdn.jsdelivr.net/npm/@huggingface/transformers@3.0.0";
@@ -92,9 +93,50 @@ async function analyzeInput() {
 
   console.log(storedGenreSuggestion)
 
-  const genreIds = storedGenreSuggestion.map(genre => TMDB_GENRES[genre]); // use storedGenreSuggestion to map values in TMDB_GENRES
+  // use storedGenreSuggestion to map values in TMDB_GENRES
+  const genreIds = storedGenreSuggestion.map(genre => TMDB_GENRES[genre]); 
 
   console.log(genreIds); 
+
+  //helper to fetch data
+  async function getMoviesByGenre(genreId, page, apiKey) {
+    const res = await fetch(
+      `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&with_genres=${genreId}&language=en-US&page=${page}`
+    );
+    return await res.json();
+  }
+
+
+
+  
+  //let moviesDict = {}
+  //iterate through genreIds to parse into api request
+  for (let i=0; i<genreIds.length;i++){
+
+    let firstData = await getMoviesByGenre(genreIds[i], 1, YOUR_API_KEY) // to determine amount of total pages per genre
+    let totalPages = 500 //Math.min(firstData.total_pages); // get total amount of pages from TMDB 
+    //console.log(totalPages)
+    let randomPage = Number(Math.floor(Math.random() * totalPages) + 1);
+    //console.log(randomPage)
+
+    const pageData = await getMoviesByGenre(genreIds[i], randomPage, YOUR_API_KEY);
+
+    console.log(pageData)
+
+
+
+  }
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -179,31 +221,4 @@ const moviesForNeutral = [
 
 
 }
-
-
-
-
-const YOUR_API_KEY = "yourAPIkey"
-
-
-async function getMoviesByGenre(genreId, page = 1, apiKey) {
-  const res = await fetch(
-    `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&with_genres=${genreId}&language=en-US&page=${page}`
-  );
-  return await res.json();
-}
-
-async function run() {
-  const data = await getMoviesByGenre(28, 1, YOUR_API_KEY); // 28 = Action
-  console.log(data);
-}
-
-//run();
-
-//const firstData = await getMoviesByGenre(18, 1, YOUR_API_KEY) // to determine amount of total pages per genre
-//const totalPages = Math.min(firstData.total_pages); // get total amount of pages from TMDB 
-//console.log(totalPages)
-//const randomPage = Math.floor(Math.random() * totalPages) + 1;
-//console.log(randomPage)
-
 
