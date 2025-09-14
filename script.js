@@ -7,6 +7,31 @@
 const textEl  = document.querySelector("#text-input");
 const btn     = document.querySelector("#analyze-btn");
 const scoreEl = document.querySelector("#score");
+let storedGenreSuggestion = null
+
+
+const TMDB_GENRES = {
+  Action: 28,
+  Adventure: 12,
+  Animation: 16,
+  "Comedy": 35,
+  Crime: 80,
+  Documentary: 99,
+  Drama: 18,
+  Family: 10751,
+  Fantasy: 14,
+  History: 36,
+  Horror: 27,
+  Music: 10402,
+  Mystery: 9648,
+  Romance: 10749,
+  "Science Fiction": 878,
+  "TV Movie": 10770,
+  Thriller: 53,
+  War: 10752,
+  Western: 37
+};
+
 
 // Import the library from the web
 import { pipeline } from "https://cdn.jsdelivr.net/npm/@huggingface/transformers@3.0.0";
@@ -43,7 +68,7 @@ async function analyzeInput() {
   //disable button while analyzing
   btn.disabled = true;
   btn.textContent = "Analyzing…";
-
+  
 
   // run analysis
   try {
@@ -51,8 +76,9 @@ async function analyzeInput() {
     const result = results[0]; // get first result from analysis
     const sentiment = result.label;
     const confidence = Math.round(result.score * 100) / 100 ; // Convert to percentage
-    scoreEl.textContent = `Sentiment: ${sentiment} (Confidence: ${confidence}). Your genre suggestions are: ${pickGenrefromSentiment(sentiment)}`;
-    
+    const genresSuggestion = pickGenrefromSentiment(sentiment)
+    storedGenreSuggestion = genresSuggestion // overwrite null storedGenreSuggestion from the top
+    scoreEl.textContent = `Sentiment: ${sentiment} (Confidence: ${confidence}). Your genre suggestions are: ${genresSuggestion}`;
   } catch (error) {
     console.error(error);
     scoreEl.textContent = "Something went wrong running the analysis.";
@@ -61,6 +87,24 @@ async function analyzeInput() {
     btn.disabled = false;
     btn.textContent = "Analyze";
   }
+
+  //logic continues...
+
+  console.log(storedGenreSuggestion)
+
+  const genreIds = storedGenreSuggestion.map(genre => TMDB_GENRES[genre]); // use storedGenreSuggestion to map values in TMDB_GENRES
+
+  console.log(genreIds); 
+
+
+
+
+
+
+
+
+
+
 }
 
 
@@ -70,6 +114,7 @@ btn.textContent = "Loading model…";
 
 init();
 
+//HELPERS
 
 // get 3 random genre propositions  from arrays 
 function pickGenrefromSentiment(label){
@@ -109,4 +154,31 @@ function pickGenrefromSentiment(label){
 
 
 }
+
+
+
+
+const YOUR_API_KEY = "yourAPIkey"
+
+
+async function getMoviesByGenre(genreId, page = 1, apiKey) {
+  const res = await fetch(
+    `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&with_genres=${genreId}&language=en-US&page=${page}`
+  );
+  return await res.json();
+}
+
+async function run() {
+  const data = await getMoviesByGenre(28, 1, YOUR_API_KEY); // 28 = Action
+  console.log(data);
+}
+
+//run();
+
+//const firstData = await getMoviesByGenre(18, 1, YOUR_API_KEY) // to determine amount of total pages per genre
+//const totalPages = Math.min(firstData.total_pages); // get total amount of pages from TMDB 
+//console.log(totalPages)
+//const randomPage = Math.floor(Math.random() * totalPages) + 1;
+//console.log(randomPage)
+
 
