@@ -138,14 +138,15 @@ async function analyzeInput() {
     }
   }
 
-  console.log("Genre 1 Movies:", genre1);
-  console.log("Genre 2 Movies:", genre2);
-  console.log("Genre 3 Movies:", genre3);
+
+  let randomMovie1 = genre1[Number(Math.floor(Math.random() * genre1.length))]
+  let randomMovie2 = genre2[Number(Math.floor(Math.random() * genre2.length))]
+  let randomMovie3 = genre3[Number(Math.floor(Math.random() * genre3.length))]
 
 
-
-
-
+  console.log(randomMovie1);
+  console.log(randomMovie2);
+  console.log(randomMovie3);
 
 
 
