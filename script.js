@@ -108,7 +108,7 @@ async function analyzeInput() {
 
 
 
-  
+  //define empty arrays for storing movie suggestions
   let genre1 = []
   let genre2 = []
   let genre3 = []
@@ -122,7 +122,7 @@ async function analyzeInput() {
 
     const pageData = await getMoviesByGenre(genreIds[i], randomPage, YOUR_API_KEY);
 
-    //  push each genreId into a variable
+    //  push each genreId into a variable to separate movue suggestions
     if (i === 0) {
       for (let j = 0; j < pageData.results.length; j++) {
         genre1.push(pageData.results[j]);
@@ -138,7 +138,7 @@ async function analyzeInput() {
     }
   }
 
-
+  //get random movie from 20 movies stored in genre1/2/3
   let randomMovie1 = genre1[Number(Math.floor(Math.random() * genre1.length))]
   let randomMovie2 = genre2[Number(Math.floor(Math.random() * genre2.length))]
   let randomMovie3 = genre3[Number(Math.floor(Math.random() * genre3.length))]
@@ -148,7 +148,12 @@ async function analyzeInput() {
   console.log(randomMovie2);
   console.log(randomMovie3);
 
-
+  //NEXT STEPS:
+  // store pictures using poster path from api call by
+  //creating a link from a base link - https://image.tmdb.org/t/p/original/${poster_path}
+  //
+  //then use movie info below from API response to use:
+  // title,release year, (Genre), popularity, description, poster in column view
 
 
 
