@@ -1,5 +1,7 @@
 body {
   font-family: system-ui, sans-serif;
+  background-color: #f3f4f6;
+  color: #111;
   margin: 2rem;
 }
 
@@ -27,4 +29,41 @@ button {
 
 .row {
   margin: 1rem 0;
+}
+
+
+
+.movieBin {
+  flex: 1 1 280px;
+  max-width: 320px;         
+  background-color: #111827; 
+  color: #e5e7eb;           
+  border: 1px solid rgba(255, 255, 255, 0.1); 
+  border-radius: 20px;     
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+
+  display: flex;             /* layout content inside the card */
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  text-align: center;
+  margin-top: 10px;
+
+}
+
+.movieBin h1 {
+  margin: 10px 0;
+}
+
+.movieBin p {
+  color: #cbd5e1;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.movieBin img {
+  width: 80%;
+  max-width: 260px;
+  border-radius: 8px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5); /* shadow under image */
 }

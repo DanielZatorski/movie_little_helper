@@ -32,7 +32,8 @@ const TMDB_GENRES = {
   Western: 37
 };
 
-const YOUR_API_KEY = "YOUR API KEY"
+const YOUR_API_KEY = "APIKEY"
+
 
 // Import the library from the web
 import { pipeline } from "https://cdn.jsdelivr.net/npm/@huggingface/transformers@3.0.0";
