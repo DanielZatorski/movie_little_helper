@@ -31,7 +31,10 @@ button {
   margin: 1rem 0;
 }
 
-
+.AllMovies{
+  display: flex;
+  flex-direction: column;
+}
 
 .movieBin {
   flex: 1 1 280px;
