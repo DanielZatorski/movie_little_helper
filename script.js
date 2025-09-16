@@ -32,7 +32,7 @@ const TMDB_GENRES = {
   Western: 37
 };
 
-const YOUR_API_KEY = "YOUR_API_KEY"
+const YOUR_API_KEY = "YOUR API KEY"
 
 // Import the library from the web
 import { pipeline } from "https://cdn.jsdelivr.net/npm/@huggingface/transformers@3.0.0";
@@ -155,7 +155,36 @@ async function analyzeInput() {
   //then use movie info below from API response to use:
   // title,release year, (Genre), popularity, description, poster in column view
 
+  function getImageUrl(movie){
 
+    let path = movie.poster_path
+
+    let constructPath = `https://image.tmdb.org/t/p/original${path}`
+
+
+    return constructPath
+
+  }
+
+  
+  // DOM WIRING OF MOVIES
+  // Movie 1
+  document.getElementById("movie1title").textContent = randomMovie1.title;
+  document.getElementById("movie1Description").textContent = randomMovie1.overview;
+  document.getElementById("img1").src = getImageUrl(randomMovie1);
+  document.getElementById("img1").alt = randomMovie1.title;
+
+  // Movie 2
+  document.getElementById("movie2title").textContent = randomMovie2.title;
+  document.getElementById("movie2Description").textContent = randomMovie2.overview;
+  document.getElementById("img2").src = getImageUrl(randomMovie2);
+  document.getElementById("img2").alt = randomMovie2.title;
+
+  // Movie 3
+  document.getElementById("movie3title").textContent = randomMovie3.title;
+  document.getElementById("movie3Description").textContent = randomMovie3.overview;
+  document.getElementById("img3").src = getImageUrl(randomMovie3);
+  document.getElementById("img3").alt = randomMovie3.title;
 
 
 
