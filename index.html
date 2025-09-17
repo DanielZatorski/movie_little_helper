@@ -8,17 +8,21 @@
     <script type="module" src="./script.js"></script>
   </head>
   <body>
-    <h1>Type how you feel, and I will help you select a movie!</h1>
+ 
 
+    <div class="initiation-container">
+    <h1>Type how you feel, and I will help you select a movie!</h1> <!-- make header text change in JS into some sentences every other 5 seconds -->
     <div class="row">
-      <textarea id="text-input"></textarea><br />
-      <button id="analyze-btn">Analyze</button>
+      <textarea id="text-input" placeholder="Type your message here..."> </textarea><br />
     </div>
+          <button id="analyze-btn">Analyze</button>
 
     <div>
       <span class="muted">Result: </span>
       <span id="score" class="score" aria-live="polite">—</span>
     </div>
+    </div>
+
 
     <div class="AllMovies">
       <div class="movieBin">

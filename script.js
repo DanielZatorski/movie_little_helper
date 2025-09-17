@@ -170,19 +170,19 @@ async function analyzeInput() {
   
   // DOM WIRING OF MOVIES
   // Movie 1
-  document.getElementById("movie1title").textContent = randomMovie1.title;
+  document.getElementById("movie1title").textContent = `${randomMovie1.title} (${randomMovie1.release_date.substring(0,4)})`
   document.getElementById("movie1Description").textContent = randomMovie1.overview;
   document.getElementById("img1").src = getImageUrl(randomMovie1);
   document.getElementById("img1").alt = randomMovie1.title;
 
   // Movie 2
-  document.getElementById("movie2title").textContent = randomMovie2.title;
+  document.getElementById("movie2title").textContent = `${randomMovie2.title} (${randomMovie2.release_date.substring(0,4)})`
   document.getElementById("movie2Description").textContent = randomMovie2.overview;
   document.getElementById("img2").src = getImageUrl(randomMovie2);
   document.getElementById("img2").alt = randomMovie2.title;
 
   // Movie 3
-  document.getElementById("movie3title").textContent = randomMovie3.title;
+  document.getElementById("movie3title").textContent = `${randomMovie3.title} (${randomMovie3.release_date.substring(0,4)})`
   document.getElementById("movie3Description").textContent = randomMovie3.overview;
   document.getElementById("img3").src = getImageUrl(randomMovie3);
   document.getElementById("img3").alt = randomMovie3.title;
