@@ -32,7 +32,7 @@ const TMDB_GENRES = {
   Western: 37
 };
 
-const YOUR_API_KEY = "APIKEY"
+const YOUR_API_KEY = process.env.TMDB_TOKEN;
 
 
 // Import the library from the web
@@ -100,19 +100,26 @@ async function analyzeInput() {
   console.log(genreIds); 
 
   //helper to fetch data
-  async function getMoviesByGenre(genreId, page, apiKey) {
+  async function getMoviesByGenre_legacy(genreId, page, apiKey) {
     const res = await fetch(
       `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&with_genres=${genreId}&language=en-US&page=${page}`
     );
     return await res.json();
   }
 
+  async function getMoviesByGenre(genreId, page) {
+  const res = await fetch(`/api/movies?genreId=${genreId}&page=${page}`);
+  if (!res.ok) throw new Error("Failed to fetch movies");
+  return res.json();
+  }
 
 
   //define empty arrays for storing movie suggestions
   let genre1 = []
   let genre2 = []
   let genre3 = []
+
+  
   //iterate through genreIds to parse into api request
   for (let i=0; i<genreIds.length;i++){
 
@@ -121,7 +128,8 @@ async function analyzeInput() {
     let randomPage = Number(Math.floor(Math.random() * totalPages) + 1);
     //console.log(randomPage)
 
-    const pageData = await getMoviesByGenre(genreIds[i], randomPage, YOUR_API_KEY);
+    //const pageData = await getMoviesByGenre(genreIds[i], randomPage, YOUR_API_KEY);
+    const pageData = await getMoviesByGenre(genreIds[i], randomPage);
 
     //  push each genreId into a variable to separate movue suggestions
     if (i === 0) {
