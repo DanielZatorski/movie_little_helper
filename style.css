@@ -129,11 +129,21 @@ button {
 @media (max-width: 768px){
 
   .AllMovies{
-    margin-top: 100px;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    align-items: center;     
+    justify-content: center; /* vertical centering */
+    gap: 16px;
+    padding: 16px;
+    min-height: 100svh;      /* safe viewport height on mobile */
   }
+
+  .movieBin{
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
+  }
+}
 
   html, body { overflow-x: hidden; }
 
@@ -146,4 +156,4 @@ button {
     padding: 16px;      /* replace the lost body margin */
     box-sizing: border-box;
   }
-}
+
