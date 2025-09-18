@@ -32,7 +32,7 @@ const TMDB_GENRES = {
   Western: 37
 };
 
-const YOUR_API_KEY = process.env.TMDB_TOKEN;
+//const YOUR_API_KEY = process.env.TMDB_TOKEN;
 
 
 // Import the library from the web
@@ -119,7 +119,7 @@ async function analyzeInput() {
   let genre2 = []
   let genre3 = []
 
-  
+
   //iterate through genreIds to parse into api request
   for (let i=0; i<genreIds.length;i++){
 
