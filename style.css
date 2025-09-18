@@ -42,6 +42,12 @@ textarea{
   transition: box-shadow 0.3s ease, border 0.3s ease;
 }
 
+
+input, textarea, select, button {
+  font-size: 16px;
+  line-height: 1.4;
+}
+
 button {
   margin-top: 40px;
   padding: 0.5rem 1rem;
@@ -129,5 +135,15 @@ button {
     justify-content: space-evenly;
   }
 
+  html, body { overflow-x: hidden; }
 
+  /* Remove the large outer margins that force shrink-to-fit */
+  body { margin: 0; }
+
+  /* Let the container breathe with inner padding instead of outer margins */
+  .initiation-container {
+    width: 100vw;       /* fill viewport width */
+    padding: 16px;      /* replace the lost body margin */
+    box-sizing: border-box;
+  }
 }
