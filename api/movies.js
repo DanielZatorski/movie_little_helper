@@ -2,7 +2,7 @@ export default async function handler(req, res) {
   const { genreId, page = "1" } = req.query || {};
   if (!genreId) return res.status(400).json({ error: "Missing genreId" });
 
-  const KEY = process.env.TMDB_API_KEY;
+  const KEY = process.env.TMDB_KEY;
   if (!KEY) return res.status(500).json({ error: "Server not configured: TMDB_API_KEY missing" });
 
   const isV3 = /^[a-f0-9]{32}$/.test(KEY); // v3 keys look like 32-hex chars
