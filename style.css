@@ -119,3 +119,15 @@ button {
 
 
 /* PUT MEDIA FOR RESPONSIVE DESIGN */
+
+@media (max-width: 768px){
+
+  .AllMovies{
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+  }
+
+
+}
