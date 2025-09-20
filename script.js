@@ -176,8 +176,11 @@ async function analyzeInput() {
   }
 
   // overwriting css class attribute to become AllMovies as a result displaying results
-  const hiddenBins = document.getElementsByClassName("hidden")
-  hiddenBins[0].setAttribute("class","AllMovies")
+  const firstHidden = document.querySelector(".hidden");
+  if (firstHidden) {
+    firstHidden.classList.remove("hidden");
+    firstHidden.classList.add("AllMovies");
+  }
 
   // DOM WIRING OF MOVIES
   // Movie 1
