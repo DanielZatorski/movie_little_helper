@@ -92,12 +92,12 @@ async function analyzeInput() {
 
   //logic continues...
 
-  console.log(storedGenreSuggestion)
+ //console.log(storedGenreSuggestion)
 
   // use storedGenreSuggestion to map values in TMDB_GENRES
   const genreIds = storedGenreSuggestion.map(genre => TMDB_GENRES[genre]); 
 
-  console.log(genreIds); 
+  //console.log(genreIds); 
 
   //helper to fetch data
   async function getMoviesByGenre_legacy(genreId, page, apiKey) {
@@ -153,9 +153,9 @@ async function analyzeInput() {
   let randomMovie3 = genre3[Number(Math.floor(Math.random() * genre3.length))]
 
 
-  console.log(randomMovie1);
-  console.log(randomMovie2);
-  console.log(randomMovie3);
+  //console.log(randomMovie1);
+  //console.log(randomMovie2);
+  //console.log(randomMovie3);
 
   //NEXT STEPS:
   // store pictures using poster path from api call by
