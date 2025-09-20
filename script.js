@@ -280,3 +280,39 @@ const moviesForNeutral = [
 
 }
 
+
+let messages = ["Hi, I am a movie little helper 🤖",
+      "Type how you feel, and I will help you select a movie! 🎞️",
+      "Let's go!"
+]
+
+let heading = document.getElementById("dynamicText")
+
+
+function printMessages(){
+
+function printStringByLetter(messageIndex = 0) {
+  const message = messages[messageIndex];
+  let index = 0;
+  heading.textContent = ""; // replace each message with empty field
+
+  const intervalId = setInterval(() => {
+    heading.textContent += message.charAt(index++); // add 1 char after each run to HTML output
+    
+    // stop writing when reaching full sentence
+    if (index >= message.length) { 
+      clearInterval(intervalId); 
+
+      //continue going through each items from an array
+      if (messageIndex + 1 < messages.length) {
+        setTimeout(() => printStringByLetter(messageIndex + 1), 2000); // start with new message after finishing and add buffer of 2 seconds
+      }
+    }
+  }, 80); // how fast it types
+}
+
+printStringByLetter()
+
+}
+
+printMessages(messages, true)
