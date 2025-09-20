@@ -175,7 +175,10 @@ async function analyzeInput() {
 
   }
 
-  
+  // overwriting css class attribute to become AllMovies as a result displaying results
+  const hiddenBins = document.getElementsByClassName("hidden")
+  hiddenBins[0].setAttribute("class","AllMovies")
+
   // DOM WIRING OF MOVIES
   // Movie 1
   document.getElementById("movie1title").textContent = `${randomMovie1.title} (${randomMovie1.release_date.substring(0,4)})⭐${Number(randomMovie1.vote_average).toFixed(0)}/10`
